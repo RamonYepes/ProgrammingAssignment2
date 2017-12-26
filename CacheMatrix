@@ -1,5 +1,8 @@
+## the goal is to create a square and invertible matrix object that can cache its inverse 
+## to improve performance 
 
 makeCacheMatrix <- function(x = numeric()) {
+## defines and caches the  matrix x and the functions available to get, set the matrix and its inverse
         inv <- NULL
         set <- function(y) {
                if(!is.matrix(y)) stop(" input must be a matrix ")
@@ -15,13 +18,14 @@ makeCacheMatrix <- function(x = numeric()) {
 }
 
 cacheSolve <- function(x, ...) {
+## computes the inverse of matrix cached by makeCacheMatrix it not already cached
         inv <- x$getinv()
         if(!is.null(inv)) {
-                message("getting cached data")
+                message("getting cached matrix result")
                 return(inv)
         }
         data <- x$get()
         invm <- solve(data, ...)
         x$setinv(invm)
-        inv
+        invm
 }
