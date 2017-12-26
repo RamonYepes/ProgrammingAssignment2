@@ -1,0 +1,27 @@
+
+makeMatrix <- function(x = numeric()) {
+        inv <- NULL
+        set <- function(y) {
+               if(!is.matrix(y) stop(" input must be a matrix ")
+                x <<- y
+                m<<-NULL
+        }
+        get <- function() x
+        setinv <- function(invm) inv <<- invm
+        getinv <- function() inv
+        list(set = set, get = get,
+             setinv = setinv,
+             getinv = getinv)
+}
+
+cacheinv <- function(x, ...) {
+        inv <- x$getinv()
+        if(!is.null(inv)) {
+                message("getting cached data")
+                return(inv)
+        }
+        data <- x$get()
+        invm <- solve(data, ...)
+        x$setinv(invm)
+        inv
+}
