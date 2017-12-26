@@ -1,5 +1,5 @@
 
-makeMatrix <- function(x = numeric()) {
+makeCacheMatrix <- function(x = numeric()) {
         inv <- NULL
         set <- function(y) {
                if(!is.matrix(y)) stop(" input must be a matrix ")
@@ -14,7 +14,7 @@ makeMatrix <- function(x = numeric()) {
              getinv = getinv)
 }
 
-cacheinv <- function(x, ...) {
+cacheSolve <- function(x, ...) {
         inv <- x$getinv()
         if(!is.null(inv)) {
                 message("getting cached data")
