@@ -2,9 +2,9 @@
 makeMatrix <- function(x = numeric()) {
         inv <- NULL
         set <- function(y) {
-               if(!is.matrix(y) stop(" input must be a matrix ")
+               if(!is.matrix(y)) stop(" input must be a matrix ")
                 x <<- y
-                m<<-NULL
+                inv<<-NULL
         }
         get <- function() x
         setinv <- function(invm) inv <<- invm
